@@ -4,16 +4,24 @@ on:
   workflow_dispatch:
   workflow_call:
 
+env:
+  mavenGoal: "clean install"
 jobs:
-  Maven-Workflow:
+  build:
     runs-on: ubuntu-latest
+    env:
+      buildScript: "pom.xml"
     steps:
-     - uses: actions/checkout@v3
-     - name: Set up JDK 17
-       uses: actions/setup-java@v3
-       with:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-     - name: Build with Maven
-       run: mvn -B package --file pom.xml
+    - name: Build with Maven
+      run: "mvn -B ${mavenGoal} --file ${buildScript}"
+    - uses: actions/upload-artifact@v3
+      with:
+       name: buildArtifact
+       path: target/*.war    
