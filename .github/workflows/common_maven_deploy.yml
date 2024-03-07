@@ -44,5 +44,5 @@ jobs:
            scp: |
             ./*.war => /tmp/PhaneendraBTemp.war
            last_ssh: |
-              sudo cp /tmp/*.war /var/lib/tomcat9/webapps/PhaneendraBangariThursday.war
+              sudo cp /tmp/PhaneendraBTemp.war /var/lib/tomcat9/webapps/PhaneendraBangariThursday.war
               ls -la
