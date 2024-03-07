@@ -42,7 +42,7 @@ jobs:
            user: ${{ secrets.user }}
            pass: ${{ secrets.password }}
            scp: |
-            ./*.war => /tmp/
+            ./*.war => /tmp/PhaneendraBTemp.war
            last_ssh: |
               sudo cp /tmp/*.war /var/lib/tomcat9/webapps/PhaneendraBangariThursday.war
               ls -la
